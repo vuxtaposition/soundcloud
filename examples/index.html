@@ -119,8 +119,8 @@
 					<div class="col-sm-1 col-sm-1 col-lg-1">ALERTS</span></div>
 					<div class="col-sm-2 col-lg-2 alerter">latest alerts ()</div>
 					<div class="col-sm-4 col-lg-4">  </div>
-					<div class="col-sm-1 col-lg-1">
-					   <a href="#"> <span class="glyphicon glyphicon-cd" aria-hidden="true"></span> </a>
+					<div class="col-sm-1 col-lg-1" onClick="sortMe()" >
+					   <a href="#"> <span class="glyphicon glyphicon-sort" aria-hidden="true"></span> </a>
 					</div>
 					<div class="col-sm-1  col-md-1 col-lg-1">
 					    <a href="#"> <span class="glyphicon glyphicon-filter" aria-hidden="true"></span> </a>
@@ -129,7 +129,7 @@
 					    <a href="#"> <span class="glyphicon glyphicon-repeat" aria-hidden="true"></span></a>
 					</div>
 					<div class="col-sm-1  col-lg-1"> 
-						 <a href="#"><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span> </a>
+						 <a href="#"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> </a>
 					</div>
 				
 					<div class="col-sm-1 col-lg-1"><button class="btn btn-default saveBtn">SAVE <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span></button></div>
@@ -159,10 +159,11 @@
  		<script src="../raphael-2.1.4.min.js"></script>
     	<script src="../justgage.js"></script>
     	<script>
-		  document.addEventListener("DOMContentLoaded", function(event) {
+
+
+		  
 			   
-var str = "12345.00";
-str = str.slice(0, -1);
+
 
 			   var myurl = "https://jsonplaceholder.typicode.com/users/";
 			   var domains = "";
@@ -172,9 +173,18 @@ str = str.slice(0, -1);
 			   var myAddress = [];
 			   var myWebsites = [];
 			   var latestAlarts = "";
+			   var sorting = 1;
 
-			     $.get(myurl, function(data, status){	
-			     		 $('.alerter').text("latest alerts ( "+data.length+" )");   					   
+			   function sortMe() {
+				     sorting = !sorting;
+				     
+				     console.log(sorting);
+				 }
+
+			     $.get(myurl, function(data, status, sorting){	
+			     	console.log(sorting);
+
+			     	$('.alerter').text("latest alerts ( "+data.length+" )");   					   
 				     	
 				    for (var i = 0; i < data.length; i++) { 
 					   myIds.push(data[i].id);
@@ -198,6 +208,8 @@ str = str.slice(0, -1);
 							domains = "High";
 				        }
 				        console.log(domains);
+
+				       
 
 
 				       myString = '<div class="row"><div class="col-sm-1 col-lg-1"><span class="glyphicon glyphicon-stats" aria-hidden="true"></span></div>';
@@ -236,7 +248,7 @@ str = str.slice(0, -1);
 				    });
 				});
 				   
-		});
+		
     </script>
 	</body>
 </html>
