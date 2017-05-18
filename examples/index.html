@@ -30,19 +30,20 @@
 	background:#5db792;
 	width:99%;
 	margin: 0 auto;
+	font-size: 12px;
 }
-.backgroun-green:nth-child(2) {
-	font-weight:bold;
-}
+
 .backgroun-green-head {
 	color:white;
 	background:#5db792;
 	width:99%;
-	height:50px;
+	height:70px;
 	margin: 0 auto;
-	border-bottom:1px solid white;
+	border-bottom:0.5px solid white;
+	border-width:thin;
 	font-size:12px;
 	padding-top:10px;
+	padding-top: 3%;
 }
 .green-wrapper {
 	border-radius:5px;
@@ -86,6 +87,16 @@
 	opacity:0.5;
 	color:lightgray;
 }
+.btn-default {
+	margin-left: -20px;
+	background:none;
+	color:white;
+	font-size:10px;
+	
+}
+.saveBtn {
+ 	margin-top: -5px;
+}
 </style>
 	</head>
 	<body>
@@ -106,7 +117,7 @@
 				<div class="row backgroun-green-head">
 				
 					<div class="col-sm-1 col-sm-1 col-lg-1">ALERTS</span></div>
-					<div class="col-sm-2 col-lg-2">latest alerts (41)</div>
+					<div class="col-sm-2 col-lg-2 alerter">latest alerts ()</div>
 					<div class="col-sm-4 col-lg-4">  </div>
 					<div class="col-sm-1 col-lg-1">
 					   <a href="#"> <span class="glyphicon glyphicon-cd" aria-hidden="true"></span> </a>
@@ -121,52 +132,95 @@
 						 <a href="#"><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span> </a>
 					</div>
 				
-					<div class="col-sm-1 col-lg-1"><button class="btn btn-default">SAVE</button></div>
+					<div class="col-sm-1 col-lg-1"><button class="btn btn-default saveBtn">SAVE <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span></button></div>
 
 				</div>
 
 
 
 				<div class="row backgroun-green">
-				
-					<div class="col-sm-1 col-lg-1"><span class="glyphicon glyphicon-stats" aria-hidden="true"></span></div>
-					<div class="col-sm-3 col-lg-3 namer">Adam Compton</div>
-					<div class="col-sm-5 col-lg-5">Adam's End of year review comming up</div>
-					<div class="col-sm-2 col-lg-2">Feb 03</div>
-					<div class="col-sm-1 col-lg-1">Very <a href="#"><span class="glyphicon glyphicon-signal" aria-hidden="true"></a></span></div>
 
 				</div>
 
-				<div class="row backgroun-green">
-				
-					<div class="col-sm-1 col-lg-1"><span class="glyphicon glyphicon-stats" aria-hidden="true"></span></div>
-					<div class="col-sm-3 col-lg-3 namer">Adam Compton</div>
-					<div class="col-sm-5 col-lg-5">Adam's End of year review comming up</div>
-					<div class="col-sm-2 col-lg-2">Feb 03</div>
-					<div class="col-sm-1 col-lg-1">Very <a href="#"><span class="glyphicon glyphicon-signal" aria-hidden="true"></a></span></div>
 
-				</div>
+				
 
 			</div>
 		</div>
 
 
-
-
 		<!-- jQuery -->
-		<script src="//code.jquery.com/jquery.js"></script>
+		<script src="https://code.jquery.com/jquery-3.2.1.js"
+  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+  crossorigin="anonymous"></script>
 		<!-- Bootstrap JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
  		<script src="../raphael-2.1.4.min.js"></script>
     	<script src="../justgage.js"></script>
     	<script>
-		     document.addEventListener("DOMContentLoaded", function(event) {
+		  document.addEventListener("DOMContentLoaded", function(event) {
+			   
+var str = "12345.00";
+str = str.slice(0, -1);
+
+			   var myurl = "https://jsonplaceholder.typicode.com/users/";
+			   var domains = "";
+			   var myIds = [];
+			   var myNames = [];
+			   var myTitles = [];
+			   var myAddress = [];
+			   var myWebsites = [];
+			   var latestAlarts = "";
+
+			     $.get(myurl, function(data, status){	
+			     		 $('.alerter').text("latest alerts ( "+data.length+" )");   					   
+				     	
+				    for (var i = 0; i < data.length; i++) { 
+					   myIds.push(data[i].id);
+					   myNames.push(data[i].name);
+					   myAddress.push(data[i].address.suite);
+					   myWebsites.push(data[i].website);
+				       myTitles.push(data[i].company.catchPhrase);
+				       
+				       var dotcom = myWebsites[i];
+				       var dotcom2 = dotcom.substr(dotcom.length - 4);
+				       
+				        if(dotcom2 == ".net"){
+				        	domains = "Low";
+				        } else if(dotcom2 ==".org"){
+				        	domains = "Middle";
+
+				        } else if(dotcom2 ==".org"){
+				        	domains = "Very";
+
+				        } else {
+							domains = "High";
+				        }
+				        console.log(domains);
+
+
+				       myString = '<div class="row"><div class="col-sm-1 col-lg-1"><span class="glyphicon glyphicon-stats" aria-hidden="true"></span></div>';
+				       myString +='<div class="col-sm-3 col-lg-3 namer">'+myNames[i]+'</div>';
+				       myString += '<div class="col-sm-4 col-lg-4">'+myTitles[i]+'</div>';
+				       myString += '<div class="col-sm-2 col-lg-2">'+myAddress[i]+'</div>';
+				       myString += '<div class="col-sm-2 col-lg-2"><a href="#"> <span class="glyphicon glyphicon-signal" aria-hidden="true"> '+domains+' </a></span></div></div>';
+
+
+				       $('.backgroun-green').append(myString);
+					}    
+						console.log()
+					var random = Math.floor((Math.random() * 10) + 1);
+					console.log(myIds[random]);  
+
+
+	               
+
 				    var gg1 = new JustGage({
 				      id: "gg1",
-				      value : 72.15,
+				      value : myIds[random],
 				      min: 0,
-				      max: 100,
+				      max: 10,
 				      decimals: 2,
 				      gaugeWidthScale: 0.6,
 				      customSectors: [{
@@ -180,27 +234,9 @@
 				      }],
 				      counter: true
 				    });
-
-				    document.getElementById('gg1_refresh').addEventListener('click', function() {
-				      gg1.refresh(getRandomInt(0, 100));
-				    });
-
-				    document.getElementById('gg1_update').addEventListener('click', function() {
-				      gg1.update({
-				        value: getRandomInt(0, 100),
-				        customSectors: [{
-				          color : "#00ff00",
-				          lo : 0,
-				          hi : 25
-				        },{
-				          color : "#ff0000",
-				          lo : 25,
-				          hi : 100
-				        }]
-				      });
-				      document.getElementById('gg1_text').innerHTML = "<b>UPDATE</b>: 0-25 is green, 26-100 is red"
-				    });
-				  });
+				});
+				   
+		});
     </script>
 	</body>
 </html>
