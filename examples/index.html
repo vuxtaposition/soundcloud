@@ -14,11 +14,11 @@ body {
 	background:#eee;
 }
 .container {
-	width:750px;
+	max-width: 750px;
 }
 .background-coal {
 	background:#4B545D;
-	height:230px;
+	height:240px;
 	color:white;
 	border-radius:5px;
 	text-align: center;
@@ -26,10 +26,10 @@ body {
 .clients-heading {
 	float:left;
 	margin-left:60px;
-	font-size:20px;
+	font-size:18px;
 	color:#759ec6;
 }
-.backgroun-green {
+.background-green {
 	background:#5db792;
 	color:white;
 	background:#5db792;
@@ -37,7 +37,7 @@ body {
 	margin: 0 auto;
 	font-size: 12px;
 }
-.backgroun-green-head {
+.background-green-head {
 	color:white;
 	background:#5db792;
 	width:99%;
@@ -66,7 +66,7 @@ body {
         padding: 7px 13px;
     }
 
-.backgroun-green > div {
+.background-green > div {
 	height:auto;
 	border-bottom:0.5px solid white;
 	padding-top:20px;
@@ -84,10 +84,10 @@ body {
 .namer {
 	font-weight:bold;
 }
-.backgroun-green-head a {
+.background-green-head a {
 	color:white;
 }
-.backgroun-green a {
+.background-green a {
 	color:white;
 }
 .glyphicon-stats {
@@ -109,7 +109,7 @@ body {
 }
 .cont {
   position: absolute;
-  top: 20px;
+  top: 18px;
   right: 0;
   bottom: 40px;
   left: 0;
@@ -150,12 +150,14 @@ body {
 	float:left;
 	width:100%;
 	margin-top:10px;
+	opacity: 0.8;
 }
 .active-clients {
 	clear:both;
 	float:left;
 	width:100%;
 	margin-top:-12px;
+	opacity: 0.8;
 }
 svg text {
 	color:#759ec6 !important;
@@ -183,15 +185,18 @@ svg text {
 					  <div class="bar"></div>
 					  <div class="bar"></div>
 					  <div class="bar"></div>
+					  <div class="bar"></div>
+					  <div class="bar"></div>
+					  <div class="bar"></div>
 					  <span class="last-twelve">LAST 12 MONTHS</span>
 					</div> 
 				</div>
-				<div class="col-lg-4 col-lg-4">dd</div>
+				<div class="col-lg-4 col-lg-4 increase"></div>
 			</div>
 			<br>
 			<div class="row green-wrapper">
 				
-				<div class="row backgroun-green-head">
+				<div class="row background-green-head">
 				
 					<div class="col-sm-1 col-xs-2 col-lg-1">ALERTS</span></div>
 					<div class="col-sm-2 col-xs-4 col-lg-2 alerter">latest alerts ()</div>
@@ -215,7 +220,7 @@ svg text {
 
 
 
-				<div class="row backgroun-green">
+				<div class="row background-green">
 
 				</div>
 			</div>
@@ -276,7 +281,7 @@ svg text {
 				       myString += '<div class="col-sm-4 col-xs-4 col-lg-4">'+myTitles[i]+'</div>';
 				       myString += '<div class="col-sm-2 col-xs-2 col-lg-2">'+myAddress[i]+'</div>';
 				       myString += '<div class="col-sm-2 col-xs-2 col-lg-2 text-right"><a href="#"> '+domains+' <span class="glyphicon glyphicon-signal" aria-hidden="true"> </a></span></div></div>';
-				       $('.backgroun-green').append(myString);
+				       $('.background-green').append(myString);
 					}    
 						console.log()
 					var random = Math.floor((Math.random() * 10) + 1);
@@ -313,6 +318,8 @@ svg text {
 				var hi = Math.random() * 100;
 		 		$(this).css("height",hi + '%');
 			});
+
+			$('.increase').append("Working on it");
 
     </script>
 	</body>
