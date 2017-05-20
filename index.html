@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+	<meta charset="utf-8">
+	<meta content="IE=edge" http-equiv="X-UA-Compatible">
+	<meta content="width=device-width, initial-scale=1" name="viewport">
+	<title>Title Page</title>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+	<div class="container">
+		<div class="row background-coal">
+			<div class="row">
+				<h3 class="clients-heading">CLIENTS <span aria-hidden="true" class="glyphicon glyphicon-triangle-right"></span></h3><a class="pull-right" href="#"><span aria-hidden="true" class="glyphicon glyphicon-cog" data-target="#myModal" data-toggle="modal"></span></a>
+			</div>
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+					<div class="gauge" id="gg1"></div><span class="active-clients">ACTIVE CLIENTS</span>
+				</div>
+				<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+					<div class="cont">
+						<div class="bar"></div>
+						<div class="bar"></div>
+						<div class="bar"></div>
+						<div class="bar"></div>
+						<div class="bar"></div>
+						<div class="bar"></div>
+						<div class="bar"></div>
+						<div class="bar"></div>
+						<div class="bar"></div>
+						<div class="bar"></div>
+						<div class="bar"></div>
+						<div class="bar"></div><span class="last-twelve">LAST 12 MONTHS</span>
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 increase">
+					<span class="arrowsUp"></span>
+					<div class="increase-number"></div><span class="last-twelve1"></span>
+				</div>
+			</div>
+		</div><br>
+		<div class="row green-wrapper">
+			<div class="row background-green-head">
+				<div class="col-sm-1 col-xs-2 col-lg-1">
+					ALERTS
+				</div>
+				<div class="col-sm-2 col-xs-4 col-lg-2 alerter">
+					latest alerts ()
+				</div>
+				<div class="col-sm-4 col-xs-1 col-lg-4"></div>
+				<div class="col-sm-1 col-xs-1 col-lg-1" onclick="sortMe()">
+					<a href="#"><span aria-hidden="true" class="glyphicon glyphicon-sort-by-alphabet"></span></a>
+				</div>
+				<div class="col-sm-1 col-md-1 col-xs-1 col-lg-1">
+					<a onclick="filterdisplay()"><span aria-hidden="true" class="glyphicon glyphicon-filter"></span></a>
+					<ul class="dropdown-filter">
+						<li class="">Medium</li>
+						<li class="">High</li>
+						<li class="">Low</li>
+					</ul>
+				</div>
+				<div class="col-sm-1 col-xs-1 col-lg-1">
+					<a href="#"><span aria-hidden="true" class="glyphicon glyphicon-repeat" onclick="refreshMe()"></span></a>
+				</div>
+				<div class="col-sm-1 col-xs-1 col-lg-1">
+					<a href="#"><span aria-hidden="true" class="glyphicon glyphicon-cog" data-target="#myModal" data-toggle="modal"></span></a>
+				</div>
+				<div class="col-sm-1 col-xs-1 col-lg-1">
+					<button class="btn btn-default saveBtn">SAVE <span aria-hidden="true" class="glyphicon glyphicon-triangle-bottom"></span></button>
+				</div>
+			</div>
+			<div class="row background-green"></div><button class="seeMore" onclick="showMore()">SEE MORE <span aria-hidden="true" class="glyphicon glyphicon-triangle-bottom"></span></button>
+		</div>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+	</script> 
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
+	</script> 
+	<script src="js/raphael-2.1.4.min.js">
+	</script> 
+	<script src="js/justgage.js">
+	</script> 
+	<script src="js/script.js">
+	</script> <!-- Modal -->
+	<div class="modal fade" id="myModal" role="dialog">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button class="close" data-dismiss="modal" type="button">&times;</button>
+					<h4 class="modal-title">Settings</h4>
+				</div>
+				<div class="modal-body">
+					<p>This is a the settings tab</p>
+				</div>
+				<div class="modal-footer">
+					<button class="btn btn-default" data-dismiss="modal" type="button">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -6,7 +6,6 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Title Page</title>
 
-		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -215,6 +214,9 @@ body {
 	margin-top:20px;
 	margin-right: 60px;
 }
+button[data-dismiss='modal'] {
+    color:blue;
+}
 @media (max-width: 978px) {
 	.background-coal {
 		height:600px;
@@ -238,242 +240,283 @@ body {
 	.seeMore {
 		width:20%;
 	}
+
 }
 svg text {
 	color:#759ec6 !important;
 }
 </style>
-	</head>
-	<body>
-		
-		<div class="container">
+</head>
+<body>
+	
+	<div class="container">
 
-			<div class="row background-coal">
-			<div class="row">
-				<H3 class="clients-heading">CLIENTS <span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></H3>
-				<a href="#" class="pull-right"><span data-toggle="modal" data-target="#myModal" class="glyphicon glyphicon-cog" aria-hidden="true"></span> </a>
-			</div>
-			<div class="row">
-				<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4"> <div id="gg1" class="gauge"></div><span class="active-clients">ACTIVE CLIENTS</span></div>
-					
-				<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4" >
-				    <div class="cont">
-					  <div class="bar"></div>
-					  <div class="bar"></div>
-					  <div class="bar"></div>
-					  <div class="bar"></div>
-					  <div class="bar"></div>
-					  <div class="bar"></div>
-					  <div class="bar"></div>
-					  <div class="bar"></div>
-					  <div class="bar"></div>
-					  <div class="bar"></div>
-					  <div class="bar"></div>
-					  <div class="bar"></div>
-					  <span class="last-twelve">LAST 12 MONTHS</span>
-					</div> 
-				</div>
-				<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 increase">
-					<span class="arrowsUp" >
-					</span>
-				<div class="increase-number"></div>
-					<span class="last-twelve1"></span>
-				</div>
-				</div>
+		<div class="row background-coal">
+		<div class="row">
+			<H3 class="clients-heading">CLIENTS <span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></H3>
+			<a href="#" class="pull-right"><span data-toggle="modal" data-target="#myModal" class="glyphicon glyphicon-cog" aria-hidden="true"></span> </a>
 		</div>
-			<br>
-			<div class="row green-wrapper">
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4"> <div id="gg1" class="gauge"></div><span class="active-clients">ACTIVE CLIENTS</span></div>
 				
-				<div class="row background-green-head">
-				
-					<div class="col-sm-1 col-xs-2 col-lg-1">ALERTS</span></div>
-					<div class="col-sm-2 col-xs-4 col-lg-2 alerter">latest alerts ()</div>
-					<div class="col-sm-4 col-xs-1 col-lg-4">  </div>
-					<div class="col-sm-1 col-xs-1 col-lg-1" onClick="sortMe()" >
-					   <a href="#"> <span class="glyphicon glyphicon-sort" aria-hidden="true"></span> </a>
-					</div>
-					<div class="col-sm-1  col-md-1 col-xs-1 col-lg-1">
-					    <a onclick="filterdisplay()" > <span class="glyphicon glyphicon-filter" aria-hidden="true"></span> </a>
-					    <ul class="dropdown-filter">
-						    <li class="">Medium</li>
-						    <li class="">High</li>
-						    <li class="">log</li>
-					    </ul>
-					</div>
-					<div class="col-sm-1 col-xs-1 col-lg-1">
-					    <a href="#"> <span onClick="refreshMe()" class="glyphicon glyphicon-repeat" aria-hidden="true"></span></a>
-					</div>
-					<div class="col-sm-1 col-xs-1 col-lg-1"> 
-						 <a href="#"><span data-toggle="modal" data-target="#myModal" class="glyphicon glyphicon-cog" aria-hidden="true"></span> </a>
-					</div>
-				
-					<div class="col-sm-1 col-xs-1 col-lg-1"><button class="btn btn-default saveBtn">SAVE <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span></button></div>
-
-				</div>
-
-				<div class="row background-green"></div>
-
-				<button class="seeMore" onclick="showMore()">SEE MORE <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span></button>
+			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4" >
+			    <div class="cont">
+				  <div class="bar"></div>
+				  <div class="bar"></div>
+				  <div class="bar"></div>
+				  <div class="bar"></div>
+				  <div class="bar"></div>
+				  <div class="bar"></div>
+				  <div class="bar"></div>
+				  <div class="bar"></div>
+				  <div class="bar"></div>
+				  <div class="bar"></div>
+				  <div class="bar"></div>
+				  <div class="bar"></div>
+				  <span class="last-twelve">LAST 12 MONTHS</span>
+				</div> 
 			</div>
-		</div>
-
-
-
-    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    	<script src="../raphael-2.1.4.min.js"></script>
-    	<script src="../justgage.js"></script>
-    	<script>
-		  
-			   
-			   var myurl = "https://jsonplaceholder.typicode.com/users/";
-			   var domains = "";
-			   var myIds = [];
-			   var myNames = [];
-			   var myTitles = [];
-			   var myAddress = [];
-			   var myWebsites = [];
-			   var latestAlarts = "";
-			   var myData;
-			   var totalLen = $('.bar').length;
-			   var secondlastone;
-			   var lastone;
-			   var difference;
-
-			     $.get(myurl, function(data, status, sorting){	
-			     	
-			     	$('.alerter').text("latest alerts ( "+data.length+" )");   					   
-				     
-				    myData = data;
-					var random = Math.floor((Math.random() * 10) + 1);
-					var increaseNumber = 100 + random ;
-
-				    for (var i = 0; i < data.length; i++) { 
-					   myIds.push(data[i].id);
-					   myNames.push(data[i].name);
-					   myAddress.push(data[i].address.suite);
-					   myWebsites.push(data[i].website);
-				       myTitles.push(data[i].company.catchPhrase);
-				       
-				       var dotcom = myWebsites[i];
-				       var dotcom2 = dotcom.substr(dotcom.length - 4);
-				       
-				        if(dotcom2 == ".net"){
-				        	domains = "Low";
-				        } else if(dotcom2 ==".org"){
-				        	domains = "Medium";
-				        } else if(dotcom2 ==".org"){
-				        	domains = "Very";
-				        } else {
-							domains = "High";
-				        }
-				       
-				       myString = '<div class="row"><div class="col-sm-1 col-xs-1 col-lg-1"><span class="outerspan"><span class="glyphicon glyphicon-stats" aria-hidden="true"></span></span></div>';
-				       myString +='<div class="col-sm-3 col-xs-3 col-lg-3 namer">'+myNames[i]+'</div>';
-				       myString += '<div class="col-sm-4 col-xs-4 col-lg-4">'+myTitles[i]+'</div>';
-				       myString += '<div class="col-sm-2 col-xs-2 col-lg-2">'+myAddress[i]+'</div>';
-				       myString += '<div class="col-sm-2 col-xs-2 col-lg-2 text-right"><a href="#"> '+domains+' <span class="glyphicon glyphicon-signal" aria-hidden="true"> </a></span></div></div>';
-				       $('.background-green').append(myString);
-					}    
-						
-					
-	               
-				    var gg1 = new JustGage({
-				      id: "gg1",
-				      value : myIds[random],
-				      min: 0,
-				      max: 10,
-				      decimals: 2,
-				      gaugeWidthScale: 0.9,			   
-				      customSectors: [{
-				        color : "#759ec6",
-				        lo : 0,
-				        hi : 50
-				      },{
-				        color : "#759ec6",
-				        lo : 50,
-				        hi : 100
-				      }],
-				      counter: true
-				    });
-				});
-
-			function sortMe() {
-			  sorting = !sorting;
-			  var ran = Math.floor(Math.random() * 10);
-			  console.log(myData[ran].name);
-			}	   
-		
-
-			$('.bar').each(function(index){
-				var hi = Math.random() * 100;
-		 		$(this).css("height",hi + '%');
-			});
-
-			secondlastone = $('.bar:nth-last-child(3)').height();
-			lastone = $('.bar').last().height();
-			difference = Math.floor((lastone - secondlastone));
-
-			if(lastone > secondlastone){
-				$('.arrowsUp').append('<i class="fa fa-angle-double-up"></i>');
-				$('.last-twelve1').append('INCREASE');
-				$('.increase-number').append("+"+difference);
-				
-			}else{
-				$('.arrowsUp').append('<i class="fa fa-angle-double-down" ></i>');
-				$('.last-twelve1').append('DECREASE');
-				$('.increase-number').append(difference);
-			}
+			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 increase">
+				<span class="arrowsUp" >
+				</span>
+			<div class="increase-number"></div>
+				<span class="last-twelve1"></span>
+			</div>
+			</div>
+	</div>
+		<br>
+		<div class="row green-wrapper">
 			
-			function takeUp() {
-				alert("takeup");
+			<div class="row background-green-head">
+			
+				<div class="col-sm-1 col-xs-2 col-lg-1">ALERTS</span></div>
+				<div class="col-sm-2 col-xs-4 col-lg-2 alerter">latest alerts ()</div>
+				<div class="col-sm-4 col-xs-1 col-lg-4">  </div>
+				<div class="col-sm-1 col-xs-1 col-lg-1" onClick="sortMe()" >
+				   <a href="#"> <span class="glyphicon glyphicon-sort-by-alphabet" aria-hidden="true"></span> </a>
+				</div>
+				<div class="col-sm-1  col-md-1 col-xs-1 col-lg-1">
+				    <a onclick="filterdisplay()" > <span class="glyphicon glyphicon-filter" aria-hidden="true"></span> </a>
+				    <ul class="dropdown-filter">
+					    <li class="">Medium</li>
+					    <li class="">High</li>
+					    <li class="">Low</li>
+				    </ul>
+				</div>
+				<div class="col-sm-1 col-xs-1 col-lg-1">
+				    <a href="#"> <span onClick="refreshMe()" class="glyphicon glyphicon-repeat" aria-hidden="true"></span></a>
+				</div>
+				<div class="col-sm-1 col-xs-1 col-lg-1"> 
+					 <a href="#"><span data-toggle="modal" data-target="#myModal" class="glyphicon glyphicon-cog" aria-hidden="true"></span> </a>
+				</div>
+			
+				<div class="col-sm-1 col-xs-1 col-lg-1"><button class="btn btn-default saveBtn">SAVE <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span></button></div>
+
+			</div>
+
+			<div class="row background-green"></div>
+
+			<button class="seeMore" onclick="showMore()">SEE MORE <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span></button>
+		</div>
+	</div>
+
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="../raphael-2.1.4.min.js"></script>
+	<script src="../justgage.js"></script>
+	<script>
+	  
+		   
+	   var myurl = "https://jsonplaceholder.typicode.com/users/";
+	   var domains = "";
+	   var myIds = [];
+	   var myNames = [];
+	   var myTitles = [];
+	   var myAddress = [];
+	   var myWebsites = [];
+	   var standingArray = [];
+	   var latestAlarts = "";
+	   var myData;
+	   var sorting;
+	   var totalLen = $('.bar').length;
+	   var secondlastone;
+	   var lastone;
+	   var difference;
+	   
+
+	     $.get(myurl, function(data, status, sorting){	
+	     	
+	     	$('.alerter').text("latest alerts ( "+data.length+" )");   					   
+		     
+		    myData = data;
+			var random = Math.floor((Math.random() * 10) + 1);
+			var increaseNumber = 100 + random ;
+
+		    for (var i = 0; i < data.length; i++) { 
+			   myIds.push(data[i].id);
+			   myNames.push(data[i].name);
+			   myAddress.push(data[i].address.suite);
+			   myWebsites.push(data[i].website);
+		       myTitles.push(data[i].company.catchPhrase);
+		       
+		       var dotcom = myWebsites[i];
+		       var dotcom2 = dotcom.substr(dotcom.length - 4);
+		       
+		        if(dotcom2 == ".net"){
+		        	domains = "Low";
+		        } else if(dotcom2 ==".org"){
+		        	domains = "Medium";
+		        } else if(dotcom2 ==".org"){
+		        	domains = "Very";
+		        } else {
+					domains = "High";
+		        }
+		       
+		       myString = '<div class="row"><div class="col-sm-1 col-xs-1 col-lg-1"><span class="outerspan"><span class="glyphicon glyphicon-stats" aria-hidden="true"></span></span></div>';
+		       myString +='<div class="col-sm-3 col-xs-3 col-lg-3 namer">'+myNames[i]+'</div>';
+		       myString += '<div class="col-sm-4 col-xs-4 col-lg-4">'+myTitles[i]+'</div>';
+		       myString += '<div class="col-sm-2 col-xs-2 col-lg-2">'+myAddress[i]+'</div>';
+		       myString += '<div class="col-sm-2 col-xs-2 col-lg-2 text-right"><a href="#"> '+domains+' <span class="glyphicon glyphicon-signal" aria-hidden="true"> </a></span></div></div>';
+		       $('.background-green').append(myString);
+			}    
+										
+               
+		    var gg1 = new JustGage({
+		      id: "gg1",
+		      value : myIds[random],
+		      min: 0,
+		      max: 10,
+		      decimals: 2,
+		      gaugeWidthScale: 0.9,			   
+		      customSectors: [{
+		        color : "#759ec6",
+		        lo : 0,
+		        hi : 50
+		      },{
+		        color : "#759ec6",
+		        lo : 50,
+		        hi : 100
+		      }],
+		      counter: true
+		    });
+		});
+
+
+		// bar graph colorings
+		$('.bar').each(function(index){
+			var hi = Math.random() * 100;
+	 		$(this).css("height",hi + '%');
+		});
+
+
+		// find height of column for the Increase or Decrease
+		secondlastone = $('.bar:nth-last-child(3)').height();
+		lastone = $('.bar').last().height();
+		difference = Math.floor((lastone - secondlastone));
+
+		if(lastone > secondlastone){
+			$('.arrowsUp').append('<i class="fa fa-angle-double-up"></i>');
+			$('.last-twelve1').append('INCREASE');
+			$('.increase-number').append("+"+difference);
+			
+		}else{
+			$('.arrowsUp').append('<i class="fa fa-angle-double-down" ></i>');
+			$('.last-twelve1').append('DECREASE');
+			$('.increase-number').append(difference);
+		}
+
+		// sort funciton
+		function sortMe() {
+		  myNames.sort();
+		  
+		  var standingArray =[];
+		  standingArray[1] = "Low";
+		  standingArray[2] = "Medium";
+		  standingArray[3] = "High"
+		  $('.background-green').html("");
+
+			for (var i = 0; i < myNames.length; i++) { 
+
+			  var randomNumber = Math.floor((Math.random() * 3) + 1);
+			  domains = standingArray[randomNumber];
+			  console.log(standingArray[0]);
+			  	myString = '<div class="row"><div class="col-sm-1 col-xs-1 col-lg-1"><span class="outerspan"><span class="glyphicon glyphicon-stats" aria-hidden="true"></span></span></div>';
+			       myString +='<div class="col-sm-3 col-xs-3 col-lg-3 namer">'+myNames[i]+'</div>';
+			       myString += '<div class="col-sm-4 col-xs-4 col-lg-4">'+myTitles[i]+'</div>';
+			       myString += '<div class="col-sm-2 col-xs-2 col-lg-2">'+myAddress[i]+'</div>';
+			       myString += '<div class="col-sm-2 col-xs-2 col-lg-2 text-right"><a href="#"> '+domains+' <span class="glyphicon glyphicon-signal" aria-hidden="true"> </a></span></div></div>';
+			    $('.background-green').append(myString);
 			}
-			function refreshMe() {
-			    location.reload();
+		}	   
+	
+
+		// refresh function
+		function refreshMe() {
+		    location.reload();
+		$('.background-green .row').hide();
+		$('.background-green .row:lt(4)').show();
+		}
+		setTimeout(function(){ 
+		$('.background-green .row').hide();
+		$('.background-green .row:lt(4)').show();
+		}, 50);
+
+
+		// show more function
+		function showMore() {
+			$('.background-green .row').show();
+			$('.seeMore').hide();
+		}
+
+
+		// filter function
+		function filterdisplay() {
+			$('.dropdown-filter ').slideToggle();
+		}
+
+		$( '.dropdown-filter li' ).each(function(index) {
+		    $(this).on("click", function(){
+			
+			var ft = $.trim($(this).text());
+			
 			$('.background-green .row').hide();
-			$('.background-green .row:lt(4)').show();
-			}
-			setTimeout(function(){ 
-			$('.background-green .row').hide();
-			$('.background-green .row:lt(4)').show();
-			}, 50);
+			
+			$('.text-right a').each(function(index){
+				var filterText = $.trim($(this).text());
+									
+				if(filterText == ft){
+				 $(this).parent().parent().show();
+				 console.log("yes "+$(this).text());	 
+				}
+				
+			})
+			$('.dropdown-filter ').slideToggle();
+		    });
+		});
 
-			function showMore() {
-				$('.background-green .row').show();
-				$('.seeMore').hide();
-			}
-			function filterdisplay() {
-				$('.dropdown-filter ').slideToggle();
-			}
-
-			$( '.dropdown-filter li' ).each(function(index) {
-			    $(this).on("click", function(){
-				alert($(this).text());
-				$('.dropdown-filter ').slideToggle();
-			    });
-			});
-
-    </script>
+</script>
 
 
 
-  <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog modal-sm">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Settings</h4>
-        </div>
-        <div class="modal-body">
-          <p>This is a the settings tab</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+<div class="modal-dialog modal-sm">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+      <h4 class="modal-title">Settings</h4>
+    </div>
+    <div class="modal-body">
+      <p>This is a the settings tab</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
     </div>
   </div>
 </div>
-	</body>
+</div>
+</div>
+</body>
 </html>
