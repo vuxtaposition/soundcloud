@@ -216,6 +216,10 @@ button[data-dismiss='modal'] {
 	.seeMore {
 		width:20%;
 	}
+	.gauge {
+		width:220px !important;
+		margin:0 auto !important;
+	}
 }
 @media (max-width: 690px) {
 	.background-coal {
@@ -228,6 +232,7 @@ button[data-dismiss='modal'] {
 	.seeMore {
 		width:20%;
 	}
+
 
 }
 svg text {
