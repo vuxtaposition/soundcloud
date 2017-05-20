@@ -7,7 +7,8 @@
 		<title>Title Page</title>
 
 		<!-- Bootstrap CSS -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <style>
 body {
@@ -53,6 +54,8 @@ body {
 	border-radius:5px;
 	height:auto;
 	background:#5db792;
+	padding-bottom: 30px;
+
 }
  .gauge {
         width: 100%;
@@ -152,12 +155,89 @@ body {
 	margin-top:10px;
 	opacity: 0.8;
 }
+.last-twelve1 {
+	clear:both;
+	float:left;
+	width:100%;
+	margin-top:10px;
+	opacity: 0.8;
+}
 .active-clients {
 	clear:both;
 	float:left;
 	width:100%;
 	margin-top:-12px;
 	opacity: 0.8;
+}
+.increase-number {
+    color: #759ec6;
+    font-size: 44px;
+    font-weight: 100;
+    height: 50px;
+    margin-top: 5px;
+}
+.arrowsUp {
+	margin-top: 55px;
+	color:#759ec6;
+    display: inline-block;
+    cursor:pointer;
+}
+.seeMore {
+	width:14%;
+	height:30px;
+	text-align:center;
+	color:white;
+	background:#7dc5a7;
+	margin-left:40%;
+	border:none;
+	font-size:10px;
+	border-radius:3px;
+}
+.dropdown-filter {
+    position: absolute;
+    width: 60px;
+    height: 65px;
+    padding: 5px;
+    background: #4B545D;
+    border-radius: 3px;
+    margin-top: 10px;
+    z-index: 999999;
+    display: none;
+    border: 1px solid gray;
+    
+}
+.dropdown-filter li {
+	list-style: none;
+	color:white;
+	cursor:pointer;
+}
+.pull-right {
+	margin-top:20px;
+	margin-right: 60px;
+}
+@media (max-width: 978px) {
+	.background-coal {
+		height:600px;
+	}
+	.increase {
+		clear:both;
+		margin-top:160px;
+	}
+	.seeMore {
+		width:20%;
+	}
+}
+@media (max-width: 690px) {
+	.background-coal {
+		height:600px;
+	}
+	.increase {
+		clear:both;
+		margin-top:160px;
+	}
+	.seeMore {
+		width:20%;
+	}
 }
 svg text {
 	color:#759ec6 !important;
@@ -171,10 +251,12 @@ svg text {
 			<div class="row background-coal">
 			<div class="row">
 				<H3 class="clients-heading">CLIENTS <span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></H3>
+				<a href="#" class="pull-right"><span data-toggle="modal" data-target="#myModal" class="glyphicon glyphicon-cog" aria-hidden="true"></span> </a>
 			</div>
-				<div class="col-md-4 col-lg-4"> <div id="gg1" class="gauge"></div><span class="active-clients">ACTIVE CLIENTS</span></div>
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4"> <div id="gg1" class="gauge"></div><span class="active-clients">ACTIVE CLIENTS</span></div>
 					
-				<div class="col-md-4 col-lg-4" >
+				<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4" >
 				    <div class="cont">
 					  <div class="bar"></div>
 					  <div class="bar"></div>
@@ -191,8 +273,14 @@ svg text {
 					  <span class="last-twelve">LAST 12 MONTHS</span>
 					</div> 
 				</div>
-				<div class="col-lg-4 col-lg-4 increase"></div>
-			</div>
+				<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 increase">
+					<span class="arrowsUp" >
+					</span>
+				<div class="increase-number"></div>
+					<span class="last-twelve1"></span>
+				</div>
+				</div>
+		</div>
 			<br>
 			<div class="row green-wrapper">
 				
@@ -205,36 +293,35 @@ svg text {
 					   <a href="#"> <span class="glyphicon glyphicon-sort" aria-hidden="true"></span> </a>
 					</div>
 					<div class="col-sm-1  col-md-1 col-xs-1 col-lg-1">
-					    <a href="#"> <span class="glyphicon glyphicon-filter" aria-hidden="true"></span> </a>
+					    <a onclick="filterdisplay()" > <span class="glyphicon glyphicon-filter" aria-hidden="true"></span> </a>
+					    <ul class="dropdown-filter">
+						    <li class="">Medium</li>
+						    <li class="">High</li>
+						    <li class="">log</li>
+					    </ul>
 					</div>
 					<div class="col-sm-1 col-xs-1 col-lg-1">
-					    <a href="#"> <span class="glyphicon glyphicon-repeat" aria-hidden="true"></span></a>
+					    <a href="#"> <span onClick="refreshMe()" class="glyphicon glyphicon-repeat" aria-hidden="true"></span></a>
 					</div>
 					<div class="col-sm-1 col-xs-1 col-lg-1"> 
-						 <a href="#"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> </a>
+						 <a href="#"><span data-toggle="modal" data-target="#myModal" class="glyphicon glyphicon-cog" aria-hidden="true"></span> </a>
 					</div>
 				
 					<div class="col-sm-1 col-xs-1 col-lg-1"><button class="btn btn-default saveBtn">SAVE <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span></button></div>
 
 				</div>
 
+				<div class="row background-green"></div>
 
-
-				<div class="row background-green">
-
-				</div>
+				<button class="seeMore" onclick="showMore()">SEE MORE <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span></button>
 			</div>
 		</div>
 
 
-		<!-- jQuery -->
-		<script src="https://code.jquery.com/jquery-3.2.1.js"
-  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
-  crossorigin="anonymous"></script>
-		<!-- Bootstrap JavaScript -->
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
- 		<script src="../raphael-2.1.4.min.js"></script>
+
+    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    	<script src="../raphael-2.1.4.min.js"></script>
     	<script src="../justgage.js"></script>
     	<script>
 		  
@@ -247,13 +334,19 @@ svg text {
 			   var myAddress = [];
 			   var myWebsites = [];
 			   var latestAlarts = "";
-			   var sorting = 1;
 			   var myData;
+			   var totalLen = $('.bar').length;
+			   var secondlastone;
+			   var lastone;
+			   var difference;
+
 			     $.get(myurl, function(data, status, sorting){	
-			     	console.log(sorting);
+			     	
 			     	$('.alerter').text("latest alerts ( "+data.length+" )");   					   
 				     
-				     myData = data;
+				    myData = data;
+					var random = Math.floor((Math.random() * 10) + 1);
+					var increaseNumber = 100 + random ;
 
 				    for (var i = 0; i < data.length; i++) { 
 					   myIds.push(data[i].id);
@@ -268,13 +361,12 @@ svg text {
 				        if(dotcom2 == ".net"){
 				        	domains = "Low";
 				        } else if(dotcom2 ==".org"){
-				        	domains = "Middle";
+				        	domains = "Medium";
 				        } else if(dotcom2 ==".org"){
 				        	domains = "Very";
 				        } else {
 							domains = "High";
 				        }
-				        console.log(domains);
 				       
 				       myString = '<div class="row"><div class="col-sm-1 col-xs-1 col-lg-1"><span class="outerspan"><span class="glyphicon glyphicon-stats" aria-hidden="true"></span></span></div>';
 				       myString +='<div class="col-sm-3 col-xs-3 col-lg-3 namer">'+myNames[i]+'</div>';
@@ -283,9 +375,8 @@ svg text {
 				       myString += '<div class="col-sm-2 col-xs-2 col-lg-2 text-right"><a href="#"> '+domains+' <span class="glyphicon glyphicon-signal" aria-hidden="true"> </a></span></div></div>';
 				       $('.background-green').append(myString);
 					}    
-						console.log()
-					var random = Math.floor((Math.random() * 10) + 1);
-					console.log(myIds[random]);  
+						
+					
 	               
 				    var gg1 = new JustGage({
 				      id: "gg1",
@@ -314,13 +405,75 @@ svg text {
 			}	   
 		
 
-			$('.bar').each(function(){
+			$('.bar').each(function(index){
 				var hi = Math.random() * 100;
 		 		$(this).css("height",hi + '%');
 			});
 
-			$('.increase').append("Working on it");
+			secondlastone = $('.bar:nth-last-child(3)').height();
+			lastone = $('.bar').last().height();
+			difference = Math.floor((lastone - secondlastone));
+
+			if(lastone > secondlastone){
+				$('.arrowsUp').append('<i class="fa fa-angle-double-up"></i>');
+				$('.last-twelve1').append('INCREASE');
+				$('.increase-number').append("+"+difference);
+				
+			}else{
+				$('.arrowsUp').append('<i class="fa fa-angle-double-down" ></i>');
+				$('.last-twelve1').append('DECREASE');
+				$('.increase-number').append(difference);
+			}
+			
+			function takeUp() {
+				alert("takeup");
+			}
+			function refreshMe() {
+			    location.reload();
+			$('.background-green .row').hide();
+			$('.background-green .row:lt(4)').show();
+			}
+			setTimeout(function(){ 
+			$('.background-green .row').hide();
+			$('.background-green .row:lt(4)').show();
+			}, 50);
+
+			function showMore() {
+				$('.background-green .row').show();
+				$('.seeMore').hide();
+			}
+			function filterdisplay() {
+				$('.dropdown-filter ').slideToggle();
+			}
+
+			$( '.dropdown-filter li' ).each(function(index) {
+			    $(this).on("click", function(){
+				alert($(this).text());
+				$('.dropdown-filter ').slideToggle();
+			    });
+			});
 
     </script>
+
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Settings</h4>
+        </div>
+        <div class="modal-body">
+          <p>This is a the settings tab</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 	</body>
 </html>
